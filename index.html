@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery UI Components</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <style>
+    /* Define styles for resizable and draggable elements */
+    .draggable,.ui-selectable {
+      width: 150px;
+      height: 150px;
+      padding: 0.5em;
+      margin: 10px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+    }
+
+    /* Define styles for droppable area */
+    .droppable {
+      width: 300px;
+      height: 200px;
+      padding: 0.5em;
+      margin: 10px;
+      border: 2px dashed #ccc;
+      background-color: #e0e0e0;
+    }
+    .resizable {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+    /* Define styles for accordion */
+    .accordion-container {
+      width: 300px;
+    }
+
+    /* Define styles for autocomplete input */
+    #autocomplete {
+      margin: 10px;
+    }
+
+    /* Define styles for datepicker input */
+    #datepicker {
+      margin: 10px;
+    }
+
+    /* Define styles for slider */
+    #slider {
+      width: 200px;
+      margin: 10px;
+    }
+
+    /* Define styles for elements with effects */
+    .effect-element {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Draggable Element -->
+  <div class="draggable" id="draggable-element">Drag Me!</div>
+
+  <!-- Droppable Area -->
+  <div class="droppable" id="droppable-area">Drop Here!</div>
+
+  <!-- Resizable Element -->
+  <div  id="resizable-element"
+  style="width: 200px;
+         height: 200px;
+         border: 1px solid black;">Resize Me!</div>
+
+  <!-- Selectable Elements -->
+  <ul class="ui-selectable" id="selectable-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+  </ul>
+
+  <!-- Accordion -->
+  <div class="accordion-container">
+    <h3>Section 1</h3>
+    <div>
+      <p>Content for Section 1</p>
+    </div>
+    <h3>Section 2</h3>
+    <div>
+      <p>Content for Section 2</p>
+    </div>
+    <h3>Section 3</h3>
+    <div>
+      <p>Content for Section 3</p>
+    </div>
+  </div>
+
+  <!-- Autocomplete -->
+  <input type="text" id="autocomplete" placeholder="Type here">
+
+  <!-- Datepicker -->
+  <input type="text" id="datepicker" placeholder="Select Date">
+
+  <!-- Slider -->
+  <div id="slider"></div>
+
+  <!-- Elements with Effects -->
+  <div class="effect-element" id="show-hide-element">Show/Hide</div>
+  <div class="effect-element" id="explode-element">Explode</div>
+  <div class="effect-element" id="fade-element">Fade In/Out</div>
+  <div class="effect-element" id="color-animation-element">Color Animation</div>
+
+  <script>
+    // Initialize draggable element
+    $("#draggable-element").draggable();
+
+    // Initialize droppable area
+    $("#droppable-area").droppable({
+      drop: function(event, ui) {
+        $(this).addClass("ui-state-highlight").html("Dropped!");
+      }
+    });
+
+    // Initialize resizable element
+    $("#resizable-element").resizable();
+
+    // Initialize selectable list
+    $("#selectable-list").selectable();
+
+    // Initialize accordion
+    $(".accordion-container").accordion();
+
+    // Initialize autocomplete
+    var availableTags = ["Apple", "Banana", "Cherry", "Date", "Grape"];
+    $("#autocomplete").autocomplete({
+      source: availableTags
+    });
+
+    // Initialize datepicker
+    $("#datepicker").datepicker();
+
+    // Initialize slider
+    $("#slider").slider();
+
+    // Initialize show/hide effect
+    $("#show-hide-element").click(function() {
+      $(this).toggle("scale");
+    });
+
+    // Initialize explode effect
+    $("#explode-element").click(function() {
+      $(this).effect("explode");
+    });
+
+    // Initialize fade-in/fade-out effect
+    $("#fade-element").click(function() {
+      $(this).fadeToggle("slow");
+    });
+
+    // Initialize color animation effect
+    $("#color-animation-element").click(function() {
+      $(this).animate({
+        backgroundColor: "#e74c3c",
+        color: "#fff"
+      }, "slow");
+    });
+  </script>
+</body>
+</html>
